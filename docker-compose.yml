@@ -1,0 +1,29 @@
+version: '2.1'
+
+services:
+  monitoring-k8s:
+    build: .
+    ports:
+      - "8080:8080"
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    depends_on:
+      - monitoring-k8s
+    volumes:
+      - ./env/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    restart: always
+
+  grafana:
+    image: grafana/grafana-oss
+    user: "$UID:$GID"
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./env/grafana/:/var/lib/grafana
+    env_file:
+      - ./env/grafana/grafana.env

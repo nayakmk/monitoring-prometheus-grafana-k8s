@@ -1,13 +1,13 @@
-package io.nayakmk.samples.templategradlek8s;
+package io.nayakmk.samples.monitoring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TemplateGradleK8sApplication {
+public class GradleK8sApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TemplateGradleK8sApplication.class, args);
+		SpringApplication.run(GradleK8sApplication.class, args);
 	}
 
 }
